@@ -1,0 +1,6 @@
+{
+  "name": "Roblox Bulk Lookup",
+  "description": "Bulk look up public Roblox account information from usernames without logging in.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
