@@ -114,7 +114,12 @@ async function startServer() {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      const indexPath = path.join(distPath, 'index.html');
+      if (require('fs').existsSync(indexPath)) {
+        res.sendFile(indexPath);
+      } else {
+        res.status(500).send("<h3>Deployment Error!</h3><p>The 'dist' folder is missing. If you're on Render, make sure your <b>Build Command</b> is exactly: <br><br><code>npm install && npm run build</code></p>");
+      }
     });
   }
 
